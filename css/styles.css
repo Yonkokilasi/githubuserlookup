@@ -1,4 +1,5 @@
 #header {
     font-family: 'Lora', serif bold;
-    color: black;
+    font-size: 60px;
+    border-bottom: 4px solid #5EF5DB;
 }

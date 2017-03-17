@@ -58,7 +58,7 @@ gulp.task("build", ["clean"], function () {
     } else {
         gulp.start('jsBuild');
     }
-    gulp.start(['Bower', 'serve', 'cssBuild'])
+    gulp.start(['Bower', 'serve'])
 });
 gulp.task("clean", function () {
     return del(['build', 'tmp']);
