@@ -1,17 +1,13 @@
-var Lookup = require('./../js/scripts.js').lookupModule;
+var Lookup = require('./../js/scripts.js').lookModule;
 var apiKey = require('./../.env').apiKey;
-
+var displayUser = function (user, userData) {
+    $("#founduser").text("You searched for " + user + "Here are their repos" + userData)
+}
 $(document).ready(function () {
     $("#blanks").submit(function (event) {
         event.preventDefault();
         var user = $("#lookup").val();
-        $.get('https://api.github.com/users/' + user + '/repos?access_token=' + apiKey).then(function (response) {
-            console.log(response);
-            $("#founduser").text("You searched for " + response[0].name)
-        }).fail(function (error) {
-            $("#founduser")
-                .text(error.responseJSON.message);
-        })
+        currentLookObject.getUser(user, displayUser);
     });
 
 });
