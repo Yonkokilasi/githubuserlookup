@@ -7,13 +7,12 @@ $(document).ready(function () {
         var user = $("#lookup").val();
         $.get('https://api.github.com/users/' + user + '/repos?access_token=' + apiKey).then(function (response) {
             console.log(response);
-
-            console.log(answer);
-            $("#founduser").text("You searched for" + response[0].description)
+            for (var i = 0; i < response.length; i++) {
+                $("#founduser").append("<li>You searched for " + response[i].name + "</li>")
+            }
         }).fail(function (error) {
             $("#founduser")
                 .text(error.responseJSON.message);
-        })
+        });
     });
-
 });
