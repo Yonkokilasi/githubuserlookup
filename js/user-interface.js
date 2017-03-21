@@ -10,9 +10,9 @@ $(document).ready(function () {
             $("#search").hide();
             for (var i = 0; i < response.length; i++) {
                 $("#result").text("These are the projects for " + user);
-                $("#founduser").append("<li>You searched for " + response[i].name + "</li>")
+                $("#founduser").append("<li>You searched for " + response[i].name + "</li>") // on success all the users projects will be appended using the loop
             }
-
+            // on fail the error will be displayed
         }).fail(function (error) {
             $("#founduser").append(error.responseJSON.message);
         });
