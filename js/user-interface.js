@@ -7,11 +7,12 @@ $(document).ready(function () {
         event.preventDefault();
         var user = $("#lookup").val();
         $("#lookup").val("");
+
         $.get('https://api.github.com/users/' + user + '/repos?access_token=' + apiKey).then(function (response) {
             console.log(response);
             $("#search").hide();
             for (var i = 0; i < response.length; i++) {
-                $("searches").prepend("These are the projects for " + user);
+                $("#result").text("These are the projects for " + user);
                 $("#founduser").append("<li>You searched for " + response[i].name + "</li>")
             }
 
@@ -24,11 +25,12 @@ $(document).ready(function () {
             event.preventDefault();
             var user = $("#lookup").val();
             $("#lookup").val("");
+            $("#result").text("These are the projects for " + user);
             $.get('https://api.github.com/users/' + user + '/repos?access_token=' + apiKey).then(function (response) {
                 console.log(response);
                 $("#search").hide();
                 for (var i = 0; i < response.length; i++) {
-                    $("searches").prepend("These are the projects for " + user);
+
                     $("#founduser").append("<li>You searched for " + response[i].name + "</li>")
                 }
 
